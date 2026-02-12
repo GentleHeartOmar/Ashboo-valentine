@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ashboo · will u be my valentine? 🌸</title>
+  <!-- LIGHT PINK ENHANCED — more visible, airy, with RED love emojis ❤️ -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(145deg, #ffe0ec 0%, #ffd9e6 35%, #ffccd9 100%);
+      /* subtle linen texture — more visible */
+      background-image: repeating-linear-gradient(45deg, rgba(255, 140, 170, 0.15) 0px, rgba(255, 140, 170, 0.15) 2px, transparent 2px, transparent 8px);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      font-family: 'Quicksand', 'Segoe UI', 'Poppins', 'Helvetica Neue', sans-serif;
+      position: relative;
+    }
+
+    /* soft pastel glow orbs — stronger pink glow */
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 140, 170, 0.3);
+      box-shadow: 0 0 100px 60px rgba(255, 120, 160, 0.35);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .orb1 {
+      width: 450px;
+      height: 450px;
+      top: -100px;
+      left: -140px;
+      background: rgba(255, 160, 190, 0.35);
+      box-shadow: 0 0 140px 90px rgba(255, 130, 170, 0.4);
+    }
+
+    .orb2 {
+      width: 550px;
+      height: 550px;
+      bottom: -180px;
+      right: -130px;
+      background: rgba(250, 150, 180, 0.3);
+      box-shadow: 0 0 160px 110px rgba(255, 140, 180, 0.35);
+    }
+
+    .orb3 {
+      width: 280px;
+      height: 280px;
+      top: 25%;
+      right: 10%;
+      background: rgba(255, 170, 200, 0.4);
+      box-shadow: 0 0 120px 70px rgba(255, 150, 190, 0.4);
+    }
+
+    /* main card — brighter, more visible pink */
+    .valentine-card {
+      max-width: 880px;
+      width: 100%;
+      background: rgba(255, 245, 245, 0.82);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-radius: 64px 32px 72px 40px;
+      padding: 3.5rem 3rem;
+      box-shadow: 0 35px 60px rgba(200, 100, 130, 0.25),
+                  0 12px 0 rgba(255, 220, 230, 0.7) inset,
+                  0 0 0 10px rgba(255, 230, 240, 0.7);
+      border: 2px solid rgba(255, 220, 230, 0.95);
+      position: relative;
+      z-index: 20;
+      transition: all 0.25s ease;
+    }
+
+    /* ashboo signature style — brighter */
+    .ash-title {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .ash-name {
+      font-size: 4.6rem;
+      font-weight: 800;
+      color: #b34e6b;
+      letter-spacing: 6px;
+      text-shadow: 0 6px 14px rgba(255, 130, 170, 0.7), 2px 8px 16px rgba(200, 100, 130, 0.3);
+      background: linear-gradient(145deg, #d47a94, #b35e76);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 6px 10px rgba(255, 150, 180, 0.6));
+    }
+
+    .valentine-question {
+      font-size: 2.9rem;
+      font-weight: 600;
+      color: #a1425d;
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
+      text-shadow: 0 2px 8px #ffc0cb;
+    }
+
+    .heart-icon {
+      font-size: 4rem;
+      display: inline-block;
+      animation: softPulse 2s infinite ease-in-out;
+      filter: drop-shadow(0 8px 12px #ff90a0);
+    }
+
+    @keyframes softPulse {
+      0% { transform: scale(1); opacity: 0.95; }
+      50% { transform: scale(1.2); opacity: 1; }
+      100% { transform: scale(1); opacity: 0.95; }
+    }
+
+    /* pretty divider — enhanced */
+    .divider {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 22px;
+      margin: 35px 0 30px;
+      color: #d6738a;
+      font-size: 2.2rem;
+    }
+
+    .divider-line {
+      height: 4px;
+      width: 90px;
+      background: linear-gradient(90deg, transparent, #ffa5b9, #ff7a97, #ffa5b9, transparent);
+    }
+
+    /* message bubble — more visible */
+    .message-bubble {
+      background: rgba(255, 230, 240, 0.85);
+      backdrop-filter: blur(8px);
+      padding: 36px 32px;
+      border-radius: 120px 30px 140px 30px;
+      border: 3px solid #ffeef2;
+      box-shadow: 0 24px 0 #fbb0c0, 0 30px 50px rgba(220, 120, 140, 0.3);
+      margin-bottom: 35px;
+    }
+
+    .message-bubble p {
+      font-size: 2.2rem;
+      color: #8a3b4c;
+      font-weight: 600;
+      line-height: 1.5;
+      text-align: center;
+      word-break: break-word;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .big-ask {
+      font-size: 3.5rem !important;
+      font-weight: 800;
+      color: #b33b54 !important;
+      text-shadow: 0 2px 0 white, 0 4px 12px #ffa5b9 !important;
+      margin-top: 15px;
+    }
+
+    .tiny-flowers {
+      font-size: 2.2rem;
+      letter-spacing: 22px;
+      text-align: center;
+      margin-top: 12px;
+      color: #c26478;
+    }
+
+    /* name altar — brighter */
+    .name-altar {
+      background: rgba(255, 220, 230, 0.8);
+      padding: 20px 28px;
+      border-radius: 220px 220px 220px 220px;
+      margin-bottom: 32px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      border: 3px solid #ffe4e9;
+      box-shadow: 0 16px 0 #e6a6b4, inset 0 -3px 0 white;
+    }
+
+    .ash-label {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #a1465b;
+      display: flex;
+      gap: 12px;
+    }
+
+    #petNameInput {
+      background: white;
+      border: 4px solid #ffb3c1;
+      padding: 14px 32px;
+      font-size: 2rem;
+      border-radius: 140px;
+      width: 280px;
+      text-align: center;
+      color: #6b3b47;
+      font-weight: 600;
+      outline: none;
+      box-shadow: inset 0 6px 14px rgba(255, 160, 180, 0.4);
+    }
+
+    #petNameInput:focus {
+      border-color: #ff809a;
+      box-shadow: 0 0 0 12px rgba(255, 140, 170, 0.25), inset 0 6px 14px #ffccd4;
+      transform: scale(1.02);
+    }
+
+    #petNameInput::placeholder {
+      color: #d47a91;
+      font-size: 1.8rem;
+      font-style: italic;
+      opacity: 0.9;
+    }
+
+    .whisper-btn {
+      background: #ffb6c9;
+      border: none;
+      border-radius: 120px;
+      padding: 16px 36px;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #5d343e;
+      border: 4px solid white;
+      box-shadow: 0 14px 0 #c47a8a, 0 18px 35px rgba(200, 110, 130, 0.4);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .whisper-btn:hover {
+      background: #ff9eb5;
+      transform: translateY(-6px) scale(1.06);
+      box-shadow: 0 10px 0 #b06676, 0 25px 40px #fba5b9;
+    }
+
+    /* flirty poetry area — enhanced */
+    .poetry-corner {
+      background: #ffeef2;
+      padding: 28px 26px;
+      border-radius: 90px 20px 90px 20px;
+      margin-bottom: 40px;
+      border-right: 10px solid #ffb6c9;
+      border-bottom: 10px solid #ffb6c9;
+      border-left: 3px solid white;
+      border-top: 3px solid white;
+    }
+
+    .flirty-line {
+      font-size: 2.1rem;
+      font-weight: 600;
+      color: #803a4a;
+      text-align: center;
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    .flirty-emoji-strip {
+      font-size: 2.8rem;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 20px;
+      opacity: 0.9;
+    }
+
+    /* BUTTONS — red love emojis only */
+    .buttons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 65px;
+      margin: 25px 0 35px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      font-size: 2.4rem;
+      font-weight: 800;
+      padding: 22px 58px;
+      border: none;
+      border-radius: 160px;
+      background: white;
+      box-shadow: 0 18px 0 #b37b86, 0 25px 45px rgba(170, 100, 120, 0.4);
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.19, 1, 0.22, 1);
+      letter-spacing: 3px;
+      border: 6px solid #fff6f7;
+    }
+
+    .yes-btn {
+      background: #ff7a97;
+      color: white;
+      transform: scale(1.08);
+    }
+
+    .yes-btn:hover {
+      background: #ff5e80;
+      transform: scale(1.32) rotate(-4deg);
+      box-shadow: 0 12px 0 #9e5e6b, 0 40px 55px #ff8aa8;
+    }
+
+    .no-btn {
+      background: #e6b8c0;
+      color: #5d3a41;
+      border: 6px solid #fff9fa;
+      box-shadow: 0 16px 0 #9a707a, 0 25px 45px rgba(150, 90, 100, 0.3);
+      position: relative;
+      transition: all 0.22s ease, left 0.3s, top 0.3s;
+    }
+
+    .no-btn:hover {
+      background: #ffa5b9;
+      color: #3e2a2e;
+      border-color: white;
+      transform: translateX(55px) scale(0.92) rotate(7deg);
+      box-shadow: 0 10px 0 #826069, 0 35px 50px #f595ad;
+    }
+
+    .no-btn:hover span {
+      display: none;
+    }
+
+    .no-btn:hover::after {
+      content: "❤️ yes? 🥺";
+      font-size: 2.2rem;
+      font-weight: bold;
+      letter-spacing: 4px;
+      color: #a13047;
+    }
+
+    /* surprise acceptance — brighter */
+    .acceptance-garden {
+      display: none;
+      margin-top: 50px;
+      padding: 40px 30px;
+      background: rgba(255, 220, 230, 0.95);
+      backdrop-filter: blur(12px);
+      border-radius: 120px 30px 120px 30px;
+      border: 8px double white;
+      text-align: center;
+      color: #963c4f;
+      font-size: 2.4rem;
+      font-weight: 700;
+      animation: bloom 0.6s;
+      box-shadow: 0 26px 0 #e3a5b2;
+    }
+
+    @keyframes bloom {
+      0% { transform: scale(0.7); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .acceptance-garden.show {
+      display: block;
+    }
+
+    .flower-shower {
+      font-size: 3.8rem;
+      letter-spacing: 26px;
+      margin: 16px 0;
+    }
+
+    .footer-message {
+      margin-top: 35px;
+      font-size: 1.9rem;
+      color: #a14e60;
+      display: flex;
+      justify-content: center;
+      gap: 22px;
+      border-top: 3px dashed #faa5b8;
+      padding-top: 30px;
+      font-weight: 600;
+    }
+
+    /* floating petals — now RED love emojis ❤️ */
+    .petal {
+      position: absolute;
+      color: rgba(255, 60, 80, 0.8);
+      font-size: 48px;
+      z-index: 5;
+      pointer-events: none;
+      animation: floatPetal 14s infinite linear;
+      filter: drop-shadow(0 0 15px #ff5e7a);
+    }
+
+    @keyframes floatPetal {
+      0% { transform: translateY(0px) rotate(0deg); opacity: 0.6; }
+      100% { transform: translateY(-200px) rotate(200deg); opacity: 0; }
+    }
+
+    .petal1 { bottom: 0; left: 3%; animation-delay: 0s; font-size: 54px; }
+    .petal2 { bottom: 15%; right: 6%; animation-delay: 2s; font-size: 62px; }
+    .petal3 { top: 12%; left: 12%; animation-delay: 1s; font-size: 58px; }
+    .petal4 { top: 72%; right: 20%; animation-delay: 4s; font-size: 68px; }
+
+    @media (max-width: 620px) {
+      .valentine-card { padding: 2.2rem 1.5rem; }
+      .ash-name { font-size: 3.4rem; }
+      .valentine-question { font-size: 2.2rem; }
+      .btn { font-size: 2rem; padding: 18px 38px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- dreamy orbs — stronger pink glow -->
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+  
+  <!-- floating petals — now RED love emojis (❤️) -->
+  <div class="petal petal1">❤️</div>
+  <div class="petal petal2">❤️</div>
+  <div class="petal petal3">❤️</div>
+  <div class="petal petal4">❤️</div>
+  <div class="petal" style="bottom: 40%; left: 18%; animation-delay: 2.8s; font-size: 70px;">❤️</div>
+  <div class="petal" style="top: 45%; right: 8%; animation-delay: 0.5s; font-size: 64px;">❤️</div>
+
+  <!-- main valentine card —— for ashboo 💗 -->
+  <div class="valentine-card">
+
+    <!-- HER NAME, big & beautiful — more visible pink -->
+    <div class="ash-title">
+      <span class="ash-name">Ashboo❤️</span>
+      <span class="heart-icon">❤️</span>
+    </div>
+
+    <!-- direct question — brighter background -->
+    <div class="valentine-question">
+      <span>will u be my</span>
+      <span style="font-weight: 800; background: #ffb3c6; padding: 0 22px; border-radius: 80px; color: #632836; box-shadow: 0 4px 0 #f28ea2;">valentine?</span>
+    </div>
+
+    <!-- dreamy divider -->
+    <div class="divider">
+      <span class="divider-line"></span>
+      <span style="transform: rotate(15deg);">🌹</span>
+      <span class="divider-line"></span>
+    </div>
+
+    <!-- personalised name altar — brighter pink -->
+    <div class="name-altar">
+      <span class="ash-label">❤️ call me</span>
+      <input type="text" id="petNameInput" placeholder="ashboo, my love?" value="ashboo">
+      <button class="whisper-btn" id="whisperBtn">
+        <span>🌸 whisper</span> ❤️
+      </button>
+    </div>
+
+    <!-- flirty poetry corner — more visible -->
+    <div class="poetry-corner" id="poetryCorner">
+      <div class="flirty-line" id="flirtyLine">
+        ashboo, are you made of lavender? because every moment with you is soft and sweet. 🌿
+      </div>
+      <div class="flirty-emoji-strip">
+        ❤️ 💭 🌸
+      </div>
+    </div>
+
+    <!-- the big ask with soft bubble -->
+    <div class="message-bubble">
+      <p>
+        <span style="font-size: 3rem;">❤️</span> 
+        for you "عائشة" my MSUMBUFU❤️, with love
+        <span style="font-size: 3rem;">❤️</span>
+      </p>
+      <p class="big-ask">
+        will you be my valentine?
+      </p>
+      <div class="tiny-flowers">
+        ❤️ ❤️ ❤️
+      </div>
+    </div>
+
+    <!-- yes / no buttons — with RED love emojis -->
+    <div class="buttons">
+      <button class="btn yes-btn" id="yesBtn">
+        <span>❤️ yes</span>
+      </button>
+      <button class="btn no-btn" id="noBtn">
+        <span>🌱 no</span>
+      </button>
+    </div>
+
+    <!-- acceptance garden — surprise appears on yes -->
+    <div id="acceptanceGarden" class="acceptance-garden">
+      <div style="font-size: 4rem; margin-bottom: 10px;">🥺❤️ yay! ❤️🥺</div>
+      <div style="font-size: 2.5rem; line-height: 1.4;" id="personalizedYes">
+         you just painted my world with roses.<br>my heart is yours, always. ❤️
+      </div>
+      <div class="flower-shower">
+        ❤️ 🌹 ❤️ 🌹 ❤️
+      </div>
+      <p style="font-size: 2rem; margin-top: 20px; font-style: italic;">
+        valentine's day with you = a dream come true ✨
+      </p>
+    </div>
+
+    <div class="footer-message">
+      <span>for عائشة❤️, my sweet valentine</span>
+      <span>💌</span>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      "use strict";
+
+      // ----- elements -----
+      const petNameInput = document.getElementById('petNameInput');
+      const whisperBtn = document.getElementById('whisperBtn');
+      const flirtyLine = document.getElementById('flirtyLine');
+      const yesBtn = document.getElementById('yesBtn');
+      const noBtn = document.getElementById('noBtn');
+      const acceptanceGarden = document.getElementById('acceptanceGarden');
+      const personalizedYes = document.getElementById('personalizedYes');
+
+      // ----- dreamy flirty messages (all with placeholder {name}) -----
+      const poetryLines = [
+        "{name}, You were a stranger I already missed. Then we spoke, and I recognized the accent of home.Happy Valentine's. I'm done pretending the moon has no effect on the sea. 🌸",
+       
+      ];
+
+      // ----- function to update flirty message with name -----
+      function updateFlirtyMessage() {
+        let name = petNameInput.value.trim();
+        if (name === "") {
+          name = "عائشة";   // always fallback to her beautiful name
+        }
+
+        // pick random line
+        const randomIdx = Math.floor(Math.random() * poetryLines.length);
+        let message = poetryLines[randomIdx];
+        message = message.replace(/\{name\}/g, name);
+        flirtyLine.innerText = message;
+      }
+
+      // ----- whisper button click -----
+      whisperBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        updateFlirtyMessage();
+        
+        // soft petal burst (tiny) — RED HEARTS
+        for (let i=0; i<6; i++) {
+          const petalSpan = document.createElement('span');
+          petalSpan.innerText = '❤️';
+          petalSpan.style.position = 'absolute';
+          petalSpan.style.left = Math.random() * 100 + '%';
+          petalSpan.style.top = Math.random() * 100 + '%';
+          petalSpan.style.fontSize = (Math.random() * 40 + 28) + 'px';
+          petalSpan.style.opacity = '0.8';
+          petalSpan.style.animation = 'floatPetal 2s ease-out forwards';
+          petalSpan.style.zIndex = '999';
+          petalSpan.style.pointerEvents = 'none';
+          petalSpan.style.filter = 'drop-shadow(0 0 12px #ff4d6d)';
+          document.body.appendChild(petalSpan);
+          setTimeout(() => petalSpan.remove(), 1900);
+        }
+
+        // if input is empty, set placeholder gently
+        if (petNameInput.value.trim() === "") {
+          petNameInput.placeholder = "ashboo?";
+        }
+      });
+
+      // ----- enter key in input -----
+      petNameInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          whisperBtn.click();
+        }
+      });
+
+      // ----- YES button — reveals garden & personalises -----
+      yesBtn.addEventListener('click', function() {
+        let herName = petNameInput.value.trim();
+        if (herName === "") herName = "ashboo";
+        
+        personalizedYes.innerHTML = `${herName}, you just painted my world with roses.<br>my heart is yours, always. ❤️`;
+        acceptanceGarden.classList.add('show');
+
+        // flower petal shower — RED HEARTS
+        const redEmojis = ['❤️', '❤️', '🌹', '❤️', '🌹', '❤️'];
+        for (let i=0; i<24; i++) {
+          const fl = document.createElement('span');
+          fl.innerText = redEmojis[Math.floor(Math.random() * redEmojis.length)];
+          fl.style.position = 'absolute';
+          fl.style.left = Math.random() * 100 + '%';
+          fl.style.top = Math.random() * 100 + '%';
+          fl.style.fontSize = (Math.random() * 55 + 22) + 'px';
+          fl.style.opacity = '0.9';
+          fl.style.animation = 'floatPetal 1.8s ease-out forwards';
+          fl.style.zIndex = '1000';
+          fl.style.filter = 'drop-shadow(0 0 15px #ff4d6d)';
+          document.body.appendChild(fl);
+          setTimeout(() => fl.remove(), 1800);
+        }
+      });
+
+      // ----- mischievous no button (runs away and becomes yes) -----
+      noBtn.addEventListener('mouseover', function(e) {
+        const offsetX = (Math.random() * 220) - 70;
+        const offsetY = (Math.random() * 200) - 60;
+        let newX = (this.offsetLeft + offsetX);
+        let newY = (this.offsetTop + offsetY);
+        const parentRect = this.parentElement.getBoundingClientRect();
+        const btnRect = this.getBoundingClientRect();
+        newX = Math.min(Math.max(newX, 10), parentRect.width - btnRect.width - 15);
+        newY = Math.min(Math.max(newY, 10), parentRect.height - btnRect.height - 15);
+        this.style.position = 'relative';
+        this.style.left = newX + 'px';
+        this.style.top = newY + 'px';
+        this.innerHTML = '<span>🥺 click yes</span>';
+      });
+
+      noBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        // treat as yes 
+        let herName = petNameInput.value.trim();
+        if (herName === "") herName = "ashboo";
+        personalizedYes.innerHTML = `${herName}, you just painted my world with roses.<br>my heart is yours, always. ❤️`;
+        acceptanceGarden.classList.add('show');
+        
+        for (let i=0; i<18; i++) {
+          const petal = document.createElement('span');
+          petal.innerText = '❤️';
+          petal.style.position = 'absolute';
+          petal.style.left = Math.random() * 100 + '%';
+          petal.style.top = Math.random() * 100 + '%';
+          petal.style.fontSize = (Math.random() * 55 + 24) + 'px';
+          petal.style.animation = 'floatPetal 1.6s ease-out forwards';
+          petal.style.zIndex = '1000';
+          petal.style.filter = 'drop-shadow(0 0 18px #ff4d6d)';
+          document.body.appendChild(petal);
+          setTimeout(() => petal.remove(), 1600);
+        }
+        // style no to look like yes
+        this.style.background = '#ff7a97';
+        this.style.color = 'white';
+        this.style.boxShadow = '0 14px 0 #b06676';
+        this.style.borderColor = 'white';
+        this.innerHTML = '<span>❤️ yes!! ❤️</span>';
+      });
+
+      // ----- set default name to ashboo (always) -----
+      window.addEventListener('load', function() {
+        petNameInput.value = 'ashboo';
+        // set a special first flirty message
+        flirtyLine.innerText = 'ashboo, are you made of lavender? because every moment with you is soft and sweet. 🌿';
+      });
+
+      // hover love for yes
+      yesBtn.addEventListener('mouseenter', function() {
+        this.style.transform = 'scale(1.38) rotate(-5deg)';
+      });
+      yesBtn.addEventListener('mouseleave', function() {
+        this.style.transform = 'scale(1.08) rotate(0deg)';
+      });
+
+      // reset no button content
+      noBtn.innerHTML = '<span>🌱 no</span>';
+    })();
+  </script>
+
+  <!-- additional tiny pretty style -->
+  <style>
+    .valentine-card {
+      transition: box-shadow 0.4s;
+    }
+    .valentine-card:hover {
+      box-shadow: 0 50px 80px rgba(200, 110, 140, 0.3), 0 0 0 12px rgba(255, 200, 210, 0.8);
+    }
+    .ash-name {
+      background: linear-gradient(145deg, #db7a94, #b85872);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .no-btn::after {
+      content: none;
+    }
+    ::selection {
+      background: #ffb3c6;
+      color: #5c313c;
+    }
+  </style>
+</body>
+</html>
